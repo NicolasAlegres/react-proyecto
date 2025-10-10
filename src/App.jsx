@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import './App.css'
+import Cart from './Cart';
 
 
 import Product from './Product'
@@ -25,12 +26,18 @@ function App() {
     }
   }
 
+  const clearCart = () => {
+    setCart([]);
+  }
+
+
   const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
 
   return (
     <div>
       <h1>Mi Tienda</h1>
       <p>🛒 Productos en el carrito: {totalItems}</p>
+      <Cart cartItems={cart} onClearCart={clearCart} />
 
       {/* Le pasamos la función al componente Product */}
       <Product name="Camiseta React"
