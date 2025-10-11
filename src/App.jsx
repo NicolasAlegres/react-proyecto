@@ -1,14 +1,33 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './App.css'
 import Cart from './Cart';
-
-
 import Product from './Product'
 
+
 function App() {
-  // array de objetos
+  // estados
 
   const [cart, setCart] = useState([])
+
+  // 'products' guardará la lista de productos que viene de la API.
+
+  const [products, setProducts] = useState([])
+  // 'loading' nos dirá si estamos esperando la respuesta de la API.
+
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    fetch('https://fakestoreapi.com/products')
+      .then(res => res.json())
+      .then(json => {
+        // Cuando tenemos los datos...
+        setProducts(json) // ...los guardamos en nuestro estado 'products'.
+        setLoading(false) // ...y cambiamos 'loading' a 'false' porque ya no estamos cargando.
+      })
+  }, [])  // El array vacío `[]` asegura que este efecto se ejecute solo una vez.
+
+
+
 
   // 🔑 Función que suma 1 al carrito
   const handleAddToCart = (productToAdd) => {
@@ -38,19 +57,30 @@ function App() {
       <h1>Mi Tienda</h1>
       <p>🛒 Productos en el carrito: {totalItems}</p>
       <Cart cartItems={cart} onClearCart={clearCart} />
+      
+      {loading ? (
+        <p>Cargando productos...</p>
+      ) : (
+      <div className="products-list">
+        {products.map(product => (
+          <Product
+            key={product.id}
+            name={product.title}
+            price={product.price}
+            onAdd={() => handleAddToCart({
+              id: product.id,
+              name: product.title,
+              price: product.price,
 
-      {/* Le pasamos la función al componente Product */}
-      <Product name="Camiseta React"
-        price={1500}
-        onAdd={() => handleAddToCart({
-          name: "Camiseta React", price: 1500
-        })} />
-
-      <Product 
-      name="Gorra JavaScript" 
-      price={800}
-      onAdd={() =>handleAddToCart({ name: "Gorra JavaScript", price: 800 })} />
+            })}
+          />
+        ))}
+      </div>
+      )
+    }
     </div>
+
+
   )
 }
 

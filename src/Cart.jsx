@@ -15,7 +15,7 @@ function Cart({cartItems, onClearCart}) {
                 <>
                 <ul>
                     {cartItems.map((item) => (
-                        <li key={item.name}>
+                        <li key={item.id}>
                             {item.name} - ${item.price} x {item.quantity}
                         </li>
                     ))}
@@ -32,6 +32,7 @@ function Cart({cartItems, onClearCart}) {
 
 Cart.propTypes = {
     cartItems: PropTypes.arrayOf(PropTypes.shape({
+        id: PropTypes.number.isRequired,
         name: PropTypes.string.isRequired,
         price: PropTypes.number.isRequired,
         quantity: PropTypes.number.isRequired,
