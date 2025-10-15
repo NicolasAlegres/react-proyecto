@@ -31,11 +31,11 @@ function App() {
 
   // 🔑 Función que suma 1 al carrito
   const handleAddToCart = (productToAdd) => {
-    const existingProduct = cart.find(item => item.name === productToAdd.name);
+    const existingProduct = cart.find(item => item.id === productToAdd.id);
 
     if (existingProduct) {
       setCart(cart.map(item =>
-        item.name === productToAdd.name ? { ...item, quantity: item.quantity + 1 }
+        item.id === productToAdd.id ? { ...item, quantity: item.quantity + 1 }
           : item
       ));
     } else {
@@ -67,6 +67,7 @@ function App() {
             key={product.id}
             name={product.title}
             price={product.price}
+            image={product.image}
             onAdd={() => handleAddToCart({
               id: product.id,
               name: product.title,
@@ -82,7 +83,9 @@ function App() {
 
 
   )
+  
 }
+
 
 export default App
 

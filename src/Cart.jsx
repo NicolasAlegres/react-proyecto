@@ -20,9 +20,10 @@ function Cart({cartItems, onClearCart}) {
                         </li>
                     ))}
                 </ul>
-                <h3>Total: ${total}</h3>
+                <h3>Total: ${total.toFixed(2)}</h3>     {/*---le decimos que muestre 2 decimales---*/}
+                
 
-                <button onClick={onClearCart}>Vaciar Carrito</button>
+                <button onClick={onClearCart} className="button">Vaciar Carrito</button>
                 
                 </>
             )}

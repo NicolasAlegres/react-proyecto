@@ -40,3 +40,52 @@
 .read-the-docs {
   color: #888;
 }
+
+.products-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+
+}
+
+/* --- ESTILOS NUEVOS PARA EL BOTÓN --- */
+
+.button{
+
+  
+  padding: 10px;
+  cursor: pointer;
+  background-color: aquamarine;
+  color: cornflowerblue;
+  border: 1px solid rgba(100, 148, 237, 0.233);
+  border-radius: 8px;
+  font-weight: 500;
+  transition: background-color 0.3s, color 0.3s, transform 0.1s, box-shadow 0.3s;
+}
+
+/* Clase para hacer el botón ancho*/
+.button--full-width {
+  width: 100%;
+}
+
+.button:hover {
+  background-color: rgba(100, 148, 237, 0.712);
+  color: aquamarine;
+} /* --- aca termina --- */
+
+.button:focus{
+   outline: none;
+}
+
+.button:focus-visible {
+  
+box-shadow: 0 0 0 3px rgba(100, 148, 237, 0.5);
+ 
+
+}
+.button:active {
+  transform: scale(0.98);
+  background-color: rgb(69, 165, 243);
+}
