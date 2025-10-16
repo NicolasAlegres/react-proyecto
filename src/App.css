@@ -11,9 +11,11 @@
   will-change: filter;
   transition: filter 300ms;
 }
+
 .logo:hover {
   filter: drop-shadow(0 0 2em #646cffaa);
 }
+
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
@@ -22,6 +24,7 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
@@ -52,9 +55,9 @@
 
 /* --- ESTILOS NUEVOS PARA EL BOTÓN --- */
 
-.button{
+.button {
 
-  
+
   padding: 10px;
   cursor: pointer;
   background-color: aquamarine;
@@ -73,18 +76,21 @@
 .button:hover {
   background-color: rgba(100, 148, 237, 0.712);
   color: aquamarine;
-} /* --- aca termina --- */
+}
 
-.button:focus{
-   outline: none;
+/* --- aca termina --- */
+
+.button:focus {
+  outline: none;
 }
 
 .button:focus-visible {
-  
-box-shadow: 0 0 0 3px rgba(100, 148, 237, 0.5);
- 
+
+  box-shadow: 0 0 0 3px rgba(100, 148, 237, 0.5);
+
 
 }
+
 .button:active {
   transform: scale(0.98);
   background-color: rgb(69, 165, 243);

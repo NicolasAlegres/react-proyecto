@@ -39,7 +39,7 @@ function App() {
           : item
       ));
     } else {
-      setCart([...cart, { ...productToAdd, quantity: 1 }]);
+      setCart([...cart, { id: productToAdd.id, name: productToAdd.title, price: productToAdd.price, quantity: 1 }]);
 
 
     }
@@ -57,33 +57,26 @@ function App() {
       <h1>Mi Tienda</h1>
       <p>🛒 Productos en el carrito: {totalItems}</p>
       <Cart cartItems={cart} onClearCart={clearCart} />
-      
+
       {loading ? (
         <p>Cargando productos...</p>
       ) : (
-      <div className="products-list">
-        {products.map(product => (
-          <Product
-            key={product.id}
-            name={product.title}
-            price={product.price}
-            image={product.image}
-            onAdd={() => handleAddToCart({
-              id: product.id,
-              name: product.title,
-              price: product.price,
-
-            })}
-          />
-        ))}
-      </div>
+        <div className="products-list">
+          {products.map(product => (
+            <Product
+              key={product.id}
+              product={product}
+              onAdd={handleAddToCart}
+            />
+          ))}
+        </div>
       )
-    }
+      }
     </div>
 
 
   )
-  
+
 }
 
 
